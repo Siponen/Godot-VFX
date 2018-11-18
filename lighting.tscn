@@ -1,0 +1,130 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://default_env.tres" type="Environment" id=1]
+[ext_resource path="res://OrbitCamera.gd" type="Script" id=2]
+[ext_resource path="res://SuzanneMesh.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SphereMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+radius = 1.0
+height = 2.0
+radial_segments = 64
+rings = 32
+is_hemisphere = false
+
+[node name="Node" type="Node"]
+
+[node name="RotateHelper" type="Spatial" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512775, 0 )
+
+[node name="OrbitCamera" type="Camera" parent="RotateHelper" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.43456 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = ExtResource( 1 )
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+script = ExtResource( 2 )
+
+[node name="Suzanne" parent="." index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0697401, 0, 0 )
+
+[node name="KeyLight" type="SpotLight" parent="Suzanne" index="2"]
+
+transform = Transform( 0.970904, -0.0736323, 0.227867, 0.0378485, 0.986778, 0.157599, -0.236458, -0.144389, 0.960854, 0.531754, -0.430872, 2.9715 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 5.0
+spot_attenuation = 1.0
+spot_angle = 45.0
+spot_angle_attenuation = 1.0
+_sections_unfolded = [ "Light" ]
+
+[node name="FillLight" type="SpotLight" parent="Suzanne" index="3"]
+
+transform = Transform( 0.367887, -0.707865, 0.602982, -0.0906795, 0.618057, 0.780886, -0.925439, -0.341956, 0.163186, 3.19219, 2.84371, 1.09046 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 0.1
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 5.0
+spot_attenuation = 1.0
+spot_angle = 45.0
+spot_angle_attenuation = 1.0
+_sections_unfolded = [ "Light", "Shadow" ]
+
+[node name="FillLight2" type="SpotLight" parent="Suzanne" index="4"]
+
+transform = Transform( -0.971099, 0.118956, -0.206919, -0.0906795, 0.618057, 0.780886, 0.220778, 0.777081, -0.589408, -1.5088, 2.86354, -2.74274 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 0.1
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 5.0
+spot_attenuation = 1.0
+spot_angle = 45.0
+spot_angle_attenuation = 1.0
+_sections_unfolded = [ "Light", "Shadow" ]
+
+[node name="Spatial" type="Spatial" parent="." index="2"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial" index="0"]
+
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = null
+
+
